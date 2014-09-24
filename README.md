@@ -1,5 +1,5 @@
-carpet
-======
+carpet3d
+========
 
 Carpet mod for Minetest
 

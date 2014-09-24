@@ -1,18 +1,18 @@
-carpet
-======
+carpet3d
+========
 
 Carpet mod for Minetest
 
-Recently still use textures from wool mod.
+Recently still use textures from vanilla minetest game.
 
 Carpet API
 ----------
-Registering a carpet [carpet.register()]
+Registering a carpet [carpet3d.register()]
 
-carpet.register(def)
+carpet3d.register(def)
 
 def is a table that contains:
-- name			: itemstring "carpet:name"
+- name			: itemstring "carpet3d:name"
 - description	: node description (optional)
 - images		: node tiles
 - recipeitem	: node crafting recipeitem {recipeitem,recipeitem}
@@ -20,7 +20,7 @@ def is a table that contains:
 - sounds		: node sounds (optional)
 
 Example:
-carpet.register({
+carpet3d.register({
 	name = name,
 	description = 'Black Carpet',
 	images = {'wool_black.png'},

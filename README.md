@@ -7,12 +7,12 @@ Recently still use textures from wool mod.
 
 Carpet API
 ----------
-Registering a carpet ```carpet.register()```
+Registering a carpet ```carpet3d.register()```
 ```
-carpet.register(def)
+carpet3d.register(def)
 ```
 def is a table that contains:
-- ```name```		: itemstring "carpet:name"
+- ```name```		: itemstring "carpet3d:name"
 - ```description```	: node description (optional)
 - ```images```		: node tiles
 - ```recipeitem```	: node crafting recipeitem {recipeitem,recipeitem}
@@ -21,7 +21,7 @@ def is a table that contains:
 
 Example:
 ```lua
-carpet.register({
+carpet3d.register({
 	name = name,
 	description = 'Black Carpet',
 	images = {'wool_black.png'},

@@ -1,5 +1,9 @@
+-- carpet3d by srifqi
+-- License: CC 1.0 Universal
+print("[carpet3d] Carpet")
 -- Carpet API
 carpet3d = {}
+carpet3d.count = 0
 
 -- Registering carpet ( carpet3d.register() )
 --[[
@@ -37,6 +41,7 @@ function carpet3d.register(def)
 			{recipeitem, recipeitem},
 		}
 	})
+	carpet3d.count = carpet3d.count +1
 end
 
 -- For internal purpose
@@ -76,11 +81,34 @@ local decor_list = {
 	{"default:apple","default_apple","Apple"},
 	{"flowers:dandelion_white","flowers_dandelion_white","White Dandelion"},
 	{"flowers:dandelion_yellow","flowers_dandelion_yellow","Yellow Dandelion"},
-	{"flowers:geranium", "flowers_geranium","Geranium"},
-	{"flowers:rose", "flowers_rose","Rose"},
-	{"flowers:tulip", "flowers_tulip","Tulip"},
-	{"flowers:viola", "flowers_viola","Viola"},
+	{"flowers:geranium","flowers_geranium","Geranium"},
+	{"flowers:rose","flowers_rose","Rose"},
+	{"flowers:tulip","flowers_tulip","Tulip"},
+	{"flowers:viola","flowers_viola","Viola"},
+	{"default:leaves","default_leaves","Leaves"},
+	{"default:jungleleaves","default_jungleleaves","Jungle Leaves"},
+	{"default:papyrus","default_papyrus","Papyrus"},
+	{"default:sapling","default_sapling","Sapling"},
+	{"default:junglesapling","default_junglesapling","Jungle Sapling"},
 }
+
+local moretrees = {}
+
+if minetest.get_modpath("moretrees") then
+	print("[carpet3d]:Mod detected: moretrees.")
+	moretrees = {
+		{"oak",			"Oak Tree"},
+		{"sequoia",		"Giant Sequoia"},
+		{"birch",		"Birch Tree"},
+		{"palm",		"Palm Tree"},
+		{"spruce",		"Spruce Tree"},
+		{"pine",		"Pine Tree"},
+		{"willow",		"Willow Tree"},
+		{"acacia",		"Acacia Tree"},
+		{"rubber_tree",	"Rubber Tree"},
+		{"fir",			"Douglas Fir"},
+	}
+end
 
 for _, row in ipairs(wool_list) do
 	local name = row[1]
@@ -117,4 +145,56 @@ for _, row in ipairs(wool_list) do
 			recipe = {"carpet3d:"..name, decor_list[i][1]},
 		})
 	end
+	for i=1, #moretrees do
+		local treename = moretrees[i][1]
+		local treedesc = moretrees[i][2]
+		--sapling
+		carpet3d.register({
+			name = name.."_with_"..treename.."_sapling",
+			description = desc..' Carpet with '..treedesc.." Sapling",
+			images = {
+				'wool_'..name..'.png^'..'moretrees_'..treename..'_sapling.png',
+				'wool_'..name..'.png^'..'moretrees_'..treename..'_sapling.png',
+				'wool_'..name..'.png'
+			},
+			recipeitem = 'carpet3d:nil',
+			groups = {
+				snappy=2,choppy=2,
+				oddly_breakable_by_hand=3,flammable=3,
+				falling_node=1,carpet=1,
+				not_in_creative_inventory=1 -- don't make creative inventory full
+			},
+			sounds = default.node_sound_defaults()
+		})
+		minetest.register_craft({
+			type = "shapeless",
+			output = "carpet3d:"..name.."_with_"..treename.."_sapling",
+			recipe = {"carpet3d:"..name, "moretrees:"..treename.."_sapling"},
+		})
+		--leaves
+		carpet3d.register({
+			name = name.."_with_"..treename.."_leaves",
+			description = desc..' Carpet with '..treedesc.." Leaves",
+			images = {
+				'wool_'..name..'.png^'..'moretrees_'..treename..'_leaves.png',
+				'wool_'..name..'.png^'..'moretrees_'..treename..'_leaves.png',
+				'wool_'..name..'.png'
+			},
+			recipeitem = 'carpet3d:nil',
+			groups = {
+				snappy=2,choppy=2,
+				oddly_breakable_by_hand=3,flammable=3,
+				falling_node=1,carpet=1,
+				not_in_creative_inventory=1 -- don't make creative inventory full
+			},
+			sounds = default.node_sound_defaults()
+		})
+		minetest.register_craft({
+			type = "shapeless",
+			output = "carpet3d:"..name.."_with_"..treename.."_leaves",
+			recipe = {"carpet3d:"..name, "moretrees:"..treename.."_leaves"},
+		})
+	end
 end
+
+print("[carpet3d]:"..carpet3d.count.." carpets added")

@@ -3,7 +3,31 @@ carpet3d
 
 Carpet mod for Minetest
 
-Recently still use textures from wool mod.
+More than 180 carpet and decoration combinations!
+
+Crafting
+--------
+To craft carpet: (shapeless)
+```
++------------+------------+------------+
+|wool:<color>|wool:<color>|            |
++------------+------------+------------+
+|            |            |            | --> carpet3d:<color>
++------------+------------+------------+
+|            |            |            |
++------------+------------+------------+
+```
+
+To craft decorated carpet: (shapeless)
+```
++----------------+------------+------------+
+|carpet3d:<color>|<decoration>|            |
++----------------+------------+------------+
+|                |            |            | --> carpet3d:<color>_with_<decoration>
++----------------+------------+------------+
+|                |            |            |
++----------------+------------+------------+
+```
 
 Carpet API
 ----------

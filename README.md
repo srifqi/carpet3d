@@ -3,7 +3,7 @@ carpet3d
 
 Carpet mod for Minetest
 
-More than 180 carpet and decoration combinations!
+More than 720 carpet and decoration combinations!
 
 Crafting
 --------
@@ -27,6 +27,17 @@ To craft decorated carpet: (shapeless)
 +----------------+------------+------------+
 |                |            |            |
 +----------------+------------+------------+
+```
+
+To craft decorated 2-layer carpet: (shapeless)
+```
++----------------------------------+------+------+
+|carpet3d:<color>_with_<decoration>|      |      |
++----------------------------------+------+------+     carpet3d:<color>
+|<front_decoration>                |      |      | --> _with_<decoration>
++----------------------------------+------+------+     _and_<front_decoration>
+|                                  |      |      |
++----------------------------------+------+------+
 ```
 
 Carpet API
